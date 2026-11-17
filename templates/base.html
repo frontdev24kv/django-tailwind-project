@@ -1,17 +1,38 @@
-{% load static tailwind_tags %}
 
+{% load static tailwind_tags %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}{% endblock  %}</title>
+
+    <title>{% block title %}Сергій Коваленко — репетитор з математики{% endblock %}</title>
+
+    <meta name="description"
+          content="{% block meta_description %}Онлайн-заняття з математики для учнів 5–11 класів. Підготовка до НМТ із Сергієм Коваленком.{% endblock %}">
+
+    <meta name="theme-color" content="#172554">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="uk_UA">
+    <meta property="og:title" content="Сергій Коваленко — репетитор з математики">
+    <meta property="og:description" content="Онлайн-заняття з математики для учнів 5–11 класів.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}">
+
+    <!-- Tailwind CSS -->
     {% tailwind_css %}
 
+    {% block extra_head %}{% endblock %}
 </head>
-<body>
-    {% block content %}{% endblock  %}
-    <h1 class="text-green-300">I like Django and Tailwind</h1>
+
+<body class="bg-slate-50 text-slate-800 antialiased">
+
+    {% block content %}{% endblock %}
+
+    {% block extra_scripts %}{% endblock %}
+
 </body>
 </html>

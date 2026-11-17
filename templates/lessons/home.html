@@ -1,0 +1,412 @@
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    {{ name }} — репетитор з математики
+{% endblock %}
+
+{% block content %}
+
+<!-- Navbar -->
+<header class="sticky top-0 z-50 bg-white/95 dark:bg-slate-900/95 backdrop-blur border-b border-slate-100 dark:border-slate-800 transition-colors">
+    <nav class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+
+        <!-- Logo -->
+        <a href="#home" class="text-2xl font-bold text-blue-950 dark:text-white">
+            SK<span class="text-orange-500">.</span>
+        </a>
+
+        <!-- Desktop navigation -->
+        <div class="hidden md:flex gap-8 font-medium text-slate-600 dark:text-slate-300">
+            <a href="#about" class="hover:text-orange-500 transition">Про мене</a>
+            <a href="#lessons" class="hover:text-orange-500 transition">Заняття</a>
+            <a href="#price" class="hover:text-orange-500 transition">Вартість</a>
+            <a href="#contacts" class="hover:text-orange-500 transition">Контакти</a>
+        </div>
+
+        <!-- Controls -->
+        <div class="flex items-center gap-3">
+
+            <!-- Theme switch -->
+            <button
+                id="theme-toggle"
+                type="button"
+                aria-label="Перемкнути тему"
+                class="w-11 h-11 flex items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition text-xl"
+            >
+                <span id="theme-icon">🌙</span>
+            </button>
+
+            <!-- Desktop CTA -->
+            <a
+                href="#contacts"
+                class="hidden sm:inline-block bg-blue-950 dark:bg-orange-500 text-white px-5 py-3 rounded-xl font-semibold hover:bg-blue-800 dark:hover:bg-orange-600 transition"
+            >
+                Записатися
+            </a>
+
+            <!-- Mobile menu button -->
+            <button
+                id="menu-toggle"
+                type="button"
+                aria-label="Відкрити меню"
+                aria-expanded="false"
+                aria-controls="mobile-menu"
+                class="md:hidden w-11 h-11 flex items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition text-2xl"
+            >
+                <span id="menu-icon">☰</span>
+            </button>
+
+        </div>
+    </nav>
+
+    <!-- Mobile navigation -->
+    <div
+        id="mobile-menu"
+        class="hidden md:hidden border-t border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900"
+    >
+        <div class="max-w-7xl mx-auto px-6 py-5 flex flex-col gap-5 font-medium text-slate-600 dark:text-slate-300">
+
+            <a href="#about" class="mobile-link hover:text-orange-500 transition">Про мене</a>
+            <a href="#lessons" class="mobile-link hover:text-orange-500 transition">Заняття</a>
+            <a href="#price" class="mobile-link hover:text-orange-500 transition">Вартість</a>
+            <a href="#contacts" class="mobile-link hover:text-orange-500 transition">Контакти</a>
+
+            <a
+                href="#contacts"
+                class="mobile-link bg-blue-950 dark:bg-orange-500 text-white text-center px-5 py-3 rounded-xl font-semibold hover:bg-blue-800 dark:hover:bg-orange-600 transition"
+            >
+                Записатися
+            </a>
+
+        </div>
+    </div>
+</header>
+
+<main>
+
+    <!-- Hero -->
+    <section id="home" class="max-w-7xl mx-auto px-6 py-20 md:py-28">
+        <div class="grid md:grid-cols-2 gap-14 items-center">
+
+            <div>
+                <span class="inline-block bg-orange-100 dark:bg-orange-500/20 text-orange-700 dark:text-orange-400 px-4 py-2 rounded-full text-sm font-semibold mb-6">
+                    Онлайн-репетитор з математики
+                </span>
+
+                <h1 class="text-5xl md:text-6xl font-bold text-blue-950 dark:text-white leading-tight mb-6">
+                    <span class="text-blue-950 dark:text-orange-500">Математика,</span>
+                    <span class="text-orange-500 dark:text-blue-950">яку ти зрозумієш!</span>
+                </h1>
+
+                <p class="text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-8">
+                    Допомагаю учням 5–11 класів зрозуміти складні теми, покращити оцінки
+                    та впевнено підготуватися до НМТ.
+                </p>
+
+                <div class="flex flex-wrap gap-4">
+
+                    <a
+                        href="#contacts"
+                        class="inline-flex items-center justify-center bg-blue-950 dark:bg-orange-500 text-white px-7 py-4 rounded-xl font-semibold hover:bg-blue-800 dark:hover:bg-orange-600 transition"
+                    >
+                        Записатися на урок
+                    </a>
+
+                    <a
+                        href="#lessons"
+                        class="inline-flex items-center justify-center border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-800 dark:text-white px-7 py-4 rounded-xl font-semibold hover:bg-slate-100 dark:hover:bg-slate-700 transition"
+                    >
+                        Мої заняття
+                    </a>
+
+                </div>
+
+                <!-- Statistics -->
+                <div class="grid grid-cols-2 gap-6 mt-12">
+
+                    <div>
+                        <p class="text-3xl font-bold text-orange-500 dark:text-orange-400">
+                            {{expirience}}
+                        </p>
+                        <p class="text-slate-500 dark:text-slate-400">
+                            Років досвіду
+                        </p>
+                    </div>
+
+                    <div>
+                        <p class="text-3xl font-bold text-orange-500 dark:text-orange-400">
+                            {{price}} ₴
+                        </p>
+                        <p class="text-slate-500 dark:text-slate-400">
+                            За 60 хвилин
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Tutor image -->
+            <div class="relative">
+                <div class="absolute inset-0 bg-orange-200 dark:bg-orange-500/30 rounded-3xl rotate-3"></div>
+
+                <img
+                    src="{% static 'images/math_tutor.png' %}"
+                    alt="{{ name }} — репетитор з математики"
+                    class="relative w-full h-[480px] object-cover rounded-3xl shadow-xl"
+                />
+            </div>
+
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="bg-white dark:bg-slate-800 py-20 transition-colors">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+
+            <span class="text-orange-500 dark:text-orange-400 font-semibold">
+                ПРО ВИКЛАДАЧА
+            </span>
+
+            <h2 class="text-4xl font-bold text-blue-950 dark:text-white mt-3 mb-6">
+                Вітаю! Мене звати {{ name }}
+            </h2>
+
+            <p class="text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl mx-auto">
+                Я репетитор з математики з досвідом викладання {{expirience}} років.
+                Допомагаю школярам розібратися з математикою, систематизувати знання та
+                впевнено рухатися до своїх цілей. На заняттях пояснюю матеріал доступно
+                та приділяю увагу індивідуальним потребам кожного учня.
+            </p>
+
+        </div>
+    </section>
+
+    <!-- Lessons -->
+    <section id="lessons" class="py-20">
+        <div class="max-w-7xl mx-auto px-6">
+
+            <div class="text-center mb-14">
+
+                <span class="text-orange-500 dark:text-blue-950 font-semibold">
+                    МОЇ ЗАНЯТТЯ
+                </span>
+
+                <h2 class="text-4xl font-bold text-blue-950 dark:text-orange-500 mt-3">
+                    Чим я можу допомогти?
+                </h2>
+
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-7">
+
+                <!-- Card 1 -->
+                <article class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 transition-colors">
+                    <div class="text-4xl mb-5">📚</div>
+
+                    <h3 class="text-xl font-bold text-blue-950 dark:text-white mb-3">
+                        5–9 класи
+                    </h3>
+
+                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                        Допомога зі шкільною програмою, домашніми завданнями
+                        та заповнення прогалин у знаннях.
+                    </p>
+                </article>
+
+                <!-- Card 2 -->
+                <article class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 transition-colors">
+                    <div class="text-4xl mb-5">📐</div>
+
+                    <h3 class="text-xl font-bold text-blue-950 dark:text-white mb-3">
+                        10–11 класи
+                    </h3>
+
+                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                        Поглиблене вивчення алгебри та геометрії, підготовка до контрольних
+                        і самостійних робіт.
+                    </p>
+                </article>
+
+                <!-- Card 3 -->
+                <article class="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 transition-colors">
+                    <div class="text-4xl mb-5">🎯</div>
+
+                    <h3 class="text-xl font-bold text-blue-950 dark:text-white mb-3">
+                        Підготовка до НМТ
+                    </h3>
+
+                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                        Повторення основних тем, розв'язування тестів та практика типових
+                        завдань НМТ.
+                    </p>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Price -->
+    <section id="price" class="bg-blue-950 dark:bg-slate-950 py-20 text-white transition-colors">
+        <div class="max-w-3xl mx-auto px-6 text-center">
+
+            <span class="text-orange-400 font-semibold">
+                ВАРТІСТЬ ЗАНЯТЬ
+            </span>
+
+            <h2 class="text-4xl text-white font-bold mt-3 mb-8">
+                Інвестиція у твої знання
+            </h2>
+
+            <div class="bg-white dark:bg-slate-800 text-slate-800 dark:text-white rounded-3xl p-10 shadow-xl transition-colors">
+
+                <p class="text-slate-500 dark:text-slate-400 font-medium">
+                    Індивідуальне онлайн-заняття
+                </p>
+
+                <p class="text-6xl font-bold text-blue-950 dark:text-white my-5">
+                    {{price}} <span class="text-2xl">грн</span>
+                </p>
+
+                <p class="text-slate-500 dark:text-slate-400 mb-8">
+                    60 хвилин навчання
+                </p>
+
+                <ul class="text-left space-y-4 mb-8">
+                    <li>✓ Індивідуальний підхід</li>
+                    <li>✓ Навчання онлайн</li>
+                    <li>✓ Практичні завдання</li>
+                    <li>✓ Пояснення складних тем</li>
+                </ul>
+
+                <a
+                    href="#contacts"
+                    class="block bg-orange-500 text-white py-4 rounded-xl font-bold hover:bg-orange-600 transition"
+                >
+                    Записатися на заняття
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacts -->
+    <section id="contacts" class="py-20">
+        <div class="max-w-3xl mx-auto px-6 text-center">
+
+            <span class="text-orange-500 dark:text-blue-950 font-semibold">
+                ЗРОБИ ПЕРШИЙ КРОК
+            </span>
+
+            <h2 class="text-4xl font-bold text-blue-950 dark:text-orange-500 mt-3 mb-5">
+                Готовий покращити свої знання?
+            </h2>
+
+            <p class="text-slate-600 text-lg mb-8">
+                Напиши мені в Telegram, щоб домовитися про заняття.
+            </p>
+
+            <a
+                href="https://t.me/{{telegram}}"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-block bg-orange-500 dark:bg-blue-950 text-white px-9 py-4 rounded-xl font-semibold hover:bg-blue-800 dark:hover:bg-orange-600 transition"
+            >
+                Написати в Telegram
+            </a>
+
+        </div>
+    </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="bg-slate-950 text-white py-8">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+
+        <p class="font-semibold text-xl mb-2">
+            {{name}}
+        </p>
+
+        <p class="text-slate-400 text-sm">
+            Репетитор з математики · Онлайн-заняття для 5–11 класів
+        </p>
+
+        <p class="text-slate-500 text-sm mt-5">
+            © {% now "Y" %} Усі права захищені.
+        </p>
+
+    </div>
+</footer>
+
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    // Theme switcher
+    const themeToggle = document.getElementById("theme-toggle");
+    const themeIcon = document.getElementById("theme-icon");
+
+    function updateThemeIcon() {
+        const isDark = document.documentElement.classList.contains("dark");
+        themeIcon.textContent = isDark ? "☀️" : "🌙";
+    }
+
+    updateThemeIcon();
+
+    themeToggle.addEventListener("click", () => {
+        const isDark = document.documentElement.classList.toggle("dark");
+        const theme = isDark ? "dark" : "light";
+
+        document.documentElement.dataset.theme = theme;
+        localStorage.setItem("theme", theme);
+
+        updateThemeIcon();
+    });
+
+    // Responsive mobile menu
+    const menuToggle = document.getElementById("menu-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const menuIcon = document.getElementById("menu-icon");
+    const mobileLinks = document.querySelectorAll(".mobile-link");
+
+    function closeMenu() {
+        mobileMenu.classList.add("hidden");
+        menuIcon.textContent = "☰";
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Відкрити меню");
+    }
+
+    menuToggle.addEventListener("click", () => {
+        const isOpening = mobileMenu.classList.contains("hidden");
+
+        mobileMenu.classList.toggle("hidden");
+
+        menuIcon.textContent = isOpening ? "✕" : "☰";
+        menuToggle.setAttribute("aria-expanded", String(isOpening));
+        menuToggle.setAttribute(
+            "aria-label",
+            isOpening ? "Закрити меню" : "Відкрити меню"
+        );
+    });
+
+    mobileLinks.forEach(link => {
+        link.addEventListener("click", closeMenu);
+    });
+
+    // Close menu when pressing Escape
+    document.addEventListener("keydown", event => {
+        if (event.key === "Escape") {
+            closeMenu();
+        }
+    });
+
+    // Close menu when switching to desktop
+    window.addEventListener("resize", () => {
+        if (window.innerWidth >= 768) {
+            closeMenu();
+        }
+    });
+</script>
+{% endblock %}
